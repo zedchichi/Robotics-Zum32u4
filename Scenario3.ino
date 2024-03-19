@@ -85,13 +85,7 @@ void explore()
       // After delivering, turn around to continue exploring
       turnAround();
     }
-  }
-
-  // After finding all houses, optimize the path for future deliveries
-  if (deliveryMade) 
-  {
-    optimizePath();
-  }
+  }  
 
 }
 
@@ -189,6 +183,7 @@ void navigateMaze()
   }
 }
 
+// function to help robot navigate corners and dead ends
 void getOut(int leftSpeed, int rightSpeed, char direction)
 {
   const int incrementDuration = 100;  // Time for each incremental turn
@@ -229,7 +224,7 @@ void getOut(int leftSpeed, int rightSpeed, char direction)
 
 }
 
-
+// house detecting logic using the proximity sensors while naviagating the maze
 bool houseDetected() {
   const uint8_t proximityThreshold = 6;
   const uint8_t closeproximityThreshold = 5;
