@@ -114,29 +114,25 @@ void turnAround()
       break;
     }
 
-    // Continuously read line sensor values during the turn
     lineSensors.read(lineSensorValues);
     
-    // Adjust turning speed based on line sensor readings to stay on track
+    // Adjust turning speed based on line sensor readings
     if (lineSensorValues[0] > QTR_THRESHOLD) 
     {
-      // If the left sensor detects the line, slightly decrease the left motor speed
+      // Decrease the left motor speed based on right sensor
       motors.setSpeeds(-TURN_SPEED / 2, TURN_SPEED);
     } 
     else if (lineSensorValues[NUM_SENSORS - 1] > QTR_THRESHOLD) 
     {
-      // If the right sensor detects the line, slightly decrease the right motor speed
       motors.setSpeeds(-TURN_SPEED, TURN_SPEED / 2);
     } 
     else if (lineSensorValues[0] < QTR_THRESHOLD && lineSensorValues[NUM_SENSORS - 1] < QTR_THRESHOLD)
     {
-      // If no sensors detect the line, proceed with the normal turn
+      // drive normal if no lines detected
       motors.setSpeeds(-TURN_SPEED, TURN_SPEED);
       delay(TURN_DURATION * 80);
     }
-    
-    // Small delay to ensure sensor readings are processed smoothly
-    delay(10);
+     delay(10);
   }
   
 }
@@ -144,7 +140,7 @@ void turnAround()
 void navigateMaze() 
 {
   lineSensors.read(lineSensorValues);
-
+  //record turn direction
   if (lineSensorValues[0] > QTR_THRESHOLD)
   {
     getOut(TURN_SPEED, -TURN_SPEED, 'R');
@@ -165,6 +161,7 @@ void navigateMaze()
   }
 }
 
+// function to help robot navigate corners and dead ends
 void getOut(int leftSpeed, int rightSpeed, char direction)
 {
   const int incrementDuration = 100;  // Time for each incremental turn
@@ -205,7 +202,7 @@ void getOut(int leftSpeed, int rightSpeed, char direction)
 
 }
 
-
+// house detecting logic using the proximity sensors while naviagating the maze
 bool houseDetected() {
   const uint8_t proximityThreshold = 6;
   const uint8_t closeproximityThreshold = 4;
