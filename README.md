@@ -3,6 +3,7 @@ Objective: Use a Pololu Zumo 32U4 - robot to simulate an automated parcel delive
 This code was programmed for the Zumo 32u4.
 
 **To start:**
+
 Open the files with the Arduino IDE
 
 Plug in the Zumo 32u4 into the 	USB Port on your laptop.
@@ -21,6 +22,7 @@ Press the A button and the Zumo will start the uploaded Scenario, the Yellow LED
 If there is no LCD Screen attached on the Zumo, once the YelloW LED light turns ON, then PRESS A to start the uploaded scenario, the Yellow LED light will turn OFF and then the robot will start moving immediately.
 
 **Scenario 1**
+
 The robot will make sure that no delivery has been made.
 
 If no delivery has been made then the robot will navigate the maze trying to find a house while also recording the path. 
@@ -30,6 +32,7 @@ Once a house is detected the robot will perform the delivery by playing a sound.
 After the delivery the robot will, reverse the path it took, turn around and follow the reversed path back to its starting position.
 
 **Scenario 2**
+
 The robot will make sure that no delivery has been made.
 
 If no delivery has been made then the robot will navigate the maze trying to find a house while also recording the path.
@@ -43,6 +46,7 @@ Once it has found at least 2 houses the robot will generate the return path star
 Note: The robot assumes that there are only 2 houses it has to delivery to.
 
 **Scenario 3**
+
 The robot will make sure that no delivery has been made.
 
 If no delivery has been made then the robot will start to explore the maze, while also detecting houses and performing deliveries.
